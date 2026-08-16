@@ -1,11 +1,15 @@
-from flask import Flask
+from flask import Flask, render_template
+
+from views.shifts import shifts_app
 
 app = Flask(__name__)
 
+app.register_blueprint(shifts_app, url_prefix="/shifts")
 
-@app.get("/")
+
+@app.get("/", endpoint="index")
 def index():
-    return "<h1>Hello, Flask!</h1>"
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

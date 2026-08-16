@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Index page
+{% endblock title %}
+
+{% block body %}
+<h2>Index page</h2>
+<div><a href="{{ url_for('shifts_app.shifts') }}">Учет смен</a></div>
+{% endblock body %}
