@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Add shifts page{% endblock title %}
+
+{% block body %}
+<h2>Add shifts template</h2>
+<div><a href="{{ url_for('index') }}">Home</a></div>
+<form class="row g-2" method="POST" action="{{ url_for('shifts_app.add_shift') }}">
+    {{ form.hidden_tag() }}
+
+    <!-- Year -->
+    <div class="mb-3 col-md-5">
+        {{ form.year.label(class="form-label fw-semibold") }}
+        <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-calendar3"></i></span>
+            {{ form.year(class="form-control" + (" is-invalid" if form.year.errors else "")) }}
+            {% if form.year.errors %}
+            <div class="invalid-feedback">
+                {{ form.year.errors[0] }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Day -->
+    <div class="mb-3 col-md-5">
+        {{ form.day.label(class="form-label fw-semibold") }}
+        <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-calendar-day"></i></span>
+            {{ form.day(class="form-control" + (" is-invalid" if form.day.errors else "")) }}
+            {% if form.day.errors %}
+            <div class="invalid-feedback">
+                {{ form.day.errors[0] }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Month -->
+    <div class="mb-3 col-md-5">
+        {{ form.month.label(class="form-label fw-semibold") }}
+        <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-calendar-month"></i></span>
+            {{ form.month(class="form-control" + (" is-invalid" if form.month.errors else "")) }}
+            {% if form.month.errors %}
+            <div class="invalid-feedback">
+                {{ form.month.errors[0] }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Shift start -->
+    <div class="mb-3 col-md-5">
+        {{ form.type_shift_start.label(class="form-label fw-semibold") }}
+        <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-shift-fill"></i></span>
+            {{ form.type_shift_start(class="form-control" + (" is-invalid" if form.type_shift_start.errors else "")) }}
+            {% if form.type_shift_start.errors %}
+            <div class="invalid-feedback">
+                {{ form.type_shift_start.errors[0] }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="d-grid">
+        {{ form.submit }}
+    </div>
+</form>
+{% endblock body %}
